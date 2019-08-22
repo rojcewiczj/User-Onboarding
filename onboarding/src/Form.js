@@ -15,7 +15,32 @@ const OnboardForm = ({errors, touched, values, status}) => {
 
     return (
         <div className="onboard-form">
-            <h1></h1>
+            <h1>User-Onboard Form</h1>
+            <Form>
+              <Field type="text" name="name" placeholder="Name" />
+              {touched.name && errors.name && (
+                  <p className="error">{errors.name}</p>
+              )}
+
+              <Field type="text" name="email" placeholder="Email" />
+              {touched.email && errors.email && <p className="error">{errors.email}</p>}
+            
+              <Field type="password" name="password" placeholder="Password" />
+              {touched.password && errors.password && <p className="error">{errors.password}</p>}
+            
+              <label className="checkbox-container">
+                  Terms of Service
+                  <Field
+                    type="checkbox"
+                    name="termsOfService"
+                    checked={values.termsOfService}
+                    />
+                    <span className="checkmark" />
+              </label>
+              
+              
+
+            </Form>
         </div>
        
     )
