@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
+import { Header, Input } from 'semantic-ui-react'
 
 const OnboardForm = ({errors, touched, values, status}) => {
    const [users, setUsers] = useState([]);
@@ -15,12 +16,14 @@ const OnboardForm = ({errors, touched, values, status}) => {
 
     return (
         <div className="onboard-form">
-            <h1>User-Onboard Form</h1>
+            <h1 className="ui header">User-Onboard Form</h1>
             <Form>
-              <Field type="text" name="name" placeholder="Name" />
+              
+              <Field  type="text" name="name" placeholder="Name" />
               {touched.name && errors.name && (
                   <p className="error">{errors.name}</p>
               )}
+             
 
               <Field type="text" name="email" placeholder="Email" />
               {touched.email && errors.email && <p className="error">{errors.email}</p>}
