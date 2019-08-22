@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
-import { Header, Input } from 'semantic-ui-react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Header, Input } from 'semantic-ui-react'
+
 const OnboardForm = ({errors, touched, values, status}) => {
    const [users, setUsers] = useState([]);
    console.log('this is touched', touched);
@@ -38,29 +38,35 @@ const OnboardForm = ({errors, touched, values, status}) => {
           <option value="healer">Healer</option>
           <option value="dps">DPS</option>
         </Field>
-            
+             
+     
               <label className="checkbox-container">
                   Terms of Service
-                  <Field
+                    
+                  <Field 
                     type="checkbox"
                     name="termsOfService"
                     checked={values.termsOfService}
-                    />
+                    /> 
+                  
                     <span className="checkmark" />
+                    
               </label>
+             
               <button type= "submit"> Submit </button>
             
 
             </Form>  
-            
+           
             {users.map(user => (
+                 <Card >
                <ul key={user.id}>
-                   <li>Name: {user.name}</li>
+                <li>Name: {user.name}</li>
                    <li>Email: {user.email}</li>
                    <li>Password:{user.password}</li>
                    <li>Role: {user.role}</li>
                    </ul>
-                 
+                 </Card>
             ))}
         </div>
        
