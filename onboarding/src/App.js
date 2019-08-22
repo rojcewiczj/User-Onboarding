@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Form from "./Form"
+import OnboardForm from "./Form"
 function App() {
   return (
     <div className="App">
-      <Form />
+      <OnboardForm />
     </div>
   );
 }
