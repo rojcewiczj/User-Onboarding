@@ -37,13 +37,23 @@ const OnboardForm = ({errors, touched, values, status}) => {
                     />
                     <span className="checkmark" />
               </label>
-              
+              <button type= "submit"> Submit </button>
               
 
             </Form>
+            {users.map(user => (
+               <ul key={user.id}>
+                   <li>Name: {user.name}</li>
+                   <li>Email: {user.email}</li>
+                   <li>Password:{user.password}</li>
+                   </ul>
+                 
+            ))}
         </div>
        
     )
 }
 
-export default OnboardForm;
+const FormikOnboardForm = withFormik ({
+    mapProps
+})
