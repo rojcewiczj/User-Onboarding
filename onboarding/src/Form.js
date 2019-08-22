@@ -27,6 +27,13 @@ const OnboardForm = ({errors, touched, values, status}) => {
             
               <Field type="password" name="password" placeholder="Password" />
               {touched.password && errors.password && <p className="error">{errors.password}</p>}
+
+              <Field component="select" className="role-select" name="role">
+          <option>Please Choose an Option</option>
+          <option value="tank">Tank</option>
+          <option value="healer">Healer</option>
+          <option value="dps">DPS</option>
+        </Field>
             
               <label className="checkbox-container">
                   Terms of Service
@@ -46,6 +53,7 @@ const OnboardForm = ({errors, touched, values, status}) => {
                    <li>Name: {user.name}</li>
                    <li>Email: {user.email}</li>
                    <li>Password:{user.password}</li>
+                   <li>Role: {user.role}</li>
                    </ul>
                  
             ))}
@@ -55,12 +63,13 @@ const OnboardForm = ({errors, touched, values, status}) => {
 }
 
 const FormikOnboardForm = withFormik ({
-    mapPropsToValues ({ name, email, password, termsOfService}) {
+    mapPropsToValues ({ name, email, password, role, termsOfService}) {
         return {
             termsOfService: termsOfService || false,
             name: name ||"",
             email: email || "",
             password: password || "",
+            role: role || "",
         }
     },
 
@@ -68,7 +77,7 @@ const FormikOnboardForm = withFormik ({
         name: Yup.string().required("for real?").min(3).max(50),
         email: Yup.string().required("you sure?").min(3).max(25).email(),
         password: Yup.string().required("hows bout you try again...").min(6).max(15)
-    
+        
 
     }),
     
