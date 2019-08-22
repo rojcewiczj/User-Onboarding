@@ -65,12 +65,17 @@ const FormikOnboardForm = withFormik ({
     },
 
     validationSchema: Yup.object().shape({
-        name: Yup.string().required(),
-        email: Yup.string().required(),
-        password: Yup.string().required()
+        name: Yup.string().required("for real?").min(3).max(20),
+        email: Yup.string().required("you sure?").min(3).max(25),
+        password: Yup.string().required("hows bout you try again...").min(6).max(15)
     
 
     }),
-
     
+    handleSubmit (values, { setStatus } ) {
+        axios
+        
+
+    }
+
 })
