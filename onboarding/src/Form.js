@@ -65,8 +65,8 @@ const FormikOnboardForm = withFormik ({
     },
 
     validationSchema: Yup.object().shape({
-        name: Yup.string().required("for real?").min(3).max(20),
-        email: Yup.string().required("you sure?").min(3).max(25),
+        name: Yup.string().required("for real?").min(3).max(50),
+        email: Yup.string().required("you sure?").min(3).max(25).email(),
         password: Yup.string().required("hows bout you try again...").min(6).max(15)
     
 
@@ -74,8 +74,15 @@ const FormikOnboardForm = withFormik ({
     
     handleSubmit (values, { setStatus } ) {
         axios
+          .post("https://reqres.in/api/users", values)
+          .then(res => {
+              setStatus(res.data);
+          })
+          .catch(err => console.log(err.response));
         
 
     }
 
-})
+})(OnboardForm);
+
+export default FormikOnboardForm;
