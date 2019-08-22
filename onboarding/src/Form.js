@@ -3,7 +3,7 @@ import axios from "axios";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { Header, Input } from 'semantic-ui-react'
-
+import { Card, Icon, Image } from 'semantic-ui-react'
 const OnboardForm = ({errors, touched, values, status}) => {
    const [users, setUsers] = useState([]);
    console.log('this is touched', touched);
@@ -17,15 +17,16 @@ const OnboardForm = ({errors, touched, values, status}) => {
     return (
         <div className="onboard-form">
             <h1 className="ui header">User-Onboard Form</h1>
-            <Form>
+          
+            <Form className="ui action input">
               
               <Field  type="text" name="name" placeholder="Name" />
               {touched.name && errors.name && (
                   <p className="error">{errors.name}</p>
               )}
              
-
-              <Field type="text" name="email" placeholder="Email" />
+              
+              <Field  type="text" name="email" placeholder="Email" />
               {touched.email && errors.email && <p className="error">{errors.email}</p>}
             
               <Field type="password" name="password" placeholder="Password" />
@@ -48,9 +49,10 @@ const OnboardForm = ({errors, touched, values, status}) => {
                     <span className="checkmark" />
               </label>
               <button type= "submit"> Submit </button>
-              
+            
 
-            </Form>
+            </Form>  
+            
             {users.map(user => (
                <ul key={user.id}>
                    <li>Name: {user.name}</li>
