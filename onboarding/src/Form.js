@@ -55,5 +55,22 @@ const OnboardForm = ({errors, touched, values, status}) => {
 }
 
 const FormikOnboardForm = withFormik ({
-    mapProps
+    mapPropsToValues ({ name, email, password, termsOfService}) {
+        return {
+            termsOfService: termsOfService || false,
+            name: name ||"",
+            email: email || "",
+            password: password || "",
+        }
+    },
+
+    validationSchema: Yup.object().shape({
+        name: Yup.string().required(),
+        email: Yup.string().required(),
+        password: Yup.string().required()
+    
+
+    }),
+
+    
 })
